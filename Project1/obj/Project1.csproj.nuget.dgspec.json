@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\madus\\source\\repos\\Project1\\Project1\\Project1.csproj": {}
+    "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Project1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\madus\\source\\repos\\Project1\\Project1\\Project1.csproj": {
+    "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Project1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\madus\\source\\repos\\Project1\\Project1\\Project1.csproj",
+        "projectUniqueName": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Project1.csproj",
         "projectName": "Project1",
-        "projectPath": "C:\\Users\\madus\\source\\repos\\Project1\\Project1\\Project1.csproj",
+        "projectPath": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Project1.csproj",
         "packagesPath": "C:\\Users\\madus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\madus\\source\\repos\\Project1\\Project1\\obj\\",
+        "outputPath": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\madus\\AppData\\Roaming\\NuGet\\NuGet.Config",

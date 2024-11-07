@@ -7,6 +7,12 @@
 
 <h1>My Blogs</h1>
 
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
 @if (Model.Count == 0)
 {
     <p>You have not posted any blogs yet.</p>
@@ -40,12 +46,10 @@ else
                         <a asp-action="MyBlogs" class="btn btn-secondary">Cancel</a>
                     </form>
                 }
-
                 else
                 {
-                   
                     <div class="mt-2">
-                        <form asp-action="MyBlogs" method="post">
+                        <form asp-action="MyBlogs" method="post" class="d-inline">
                             <input type="hidden" name="editingBlogId" value="@blog.BlogID" />
                             <button type="submit" class="btn btn-warning btn-sm">Edit</button>
                         </form>
@@ -57,8 +61,9 @@ else
                         </form>
                     </div>
                 }
+
             </li>
         }
     </ul>
 }
-<div asp-validation-summary="All"></div>
+

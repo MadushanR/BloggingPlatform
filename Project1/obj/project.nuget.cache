@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+WR6zBAE748=",
+  "dgSpecHash": "qRK419n7wfs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\madus\\source\\repos\\Project1\\Project1\\Project1.csproj",
+  "projectFilePath": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Project1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\madus\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\madus\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

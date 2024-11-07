@@ -68,6 +68,29 @@ public class BlogController : Controller
 
         return View(userBlogs);
     }
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> MyBlogs(int? editingBlogId)
+    {
+        if (editingBlogId.HasValue)
+        {
+            TempData["EditingBlogId"] = editingBlogId;
+        }
+
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            TempData["ErrorMessage"] = "Please log in to view your blogs.";
+            return RedirectToAction("Login", "Account");
+        }
+
+        var userBlogs = await _context.Blogs
+                                      .Where(b => b.UserID == user.Id)
+                                      .OrderByDescending(b => b.DatePosted)
+                                      .ToListAsync(); 
+        return View(userBlogs);
+    }
+
 
     [Authorize]
     [HttpPost]
@@ -125,8 +148,8 @@ public class BlogController : Controller
             blog.DatePosted = DateTime.Now;
 
             await _context.SaveChangesAsync();
-
             TempData["SuccessMessage"] = "Blog post updated successfully!";
+
             return RedirectToAction("MyBlogs");
         }
 
