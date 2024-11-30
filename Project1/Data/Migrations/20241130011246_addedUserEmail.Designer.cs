@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project1.Data;
 
@@ -10,9 +11,11 @@ using Project1.Data;
 namespace Project1.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241130011246_addedUserEmail")]
+    partial class addedUserEmail
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
@@ -243,38 +246,6 @@ namespace Project1.Data.Migrations
                     b.ToTable("Blogs");
                 });
 
-            modelBuilder.Entity("Project1.Models.Comment", b =>
-                {
-                    b.Property<int>("CommentID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("BlogID")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DatePosted")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserEmail")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserID")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("CommentID");
-
-                    b.HasIndex("BlogID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("Comments");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -333,28 +304,6 @@ namespace Project1.Data.Migrations
                         .HasForeignKey("UserID");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Project1.Models.Comment", b =>
-                {
-                    b.HasOne("Project1.Models.Blog", "Blog")
-                        .WithMany("Comments")
-                        .HasForeignKey("BlogID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID");
-
-                    b.Navigation("Blog");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Project1.Models.Blog", b =>
-                {
-                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

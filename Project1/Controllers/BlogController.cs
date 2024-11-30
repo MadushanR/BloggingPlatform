@@ -41,6 +41,7 @@ public class BlogController : Controller
 
            
             model.UserID = user.Id;
+            model.UserEmail = user.Email;
             _context.Blogs.Add(model);
             await _context.SaveChangesAsync();
 
@@ -62,9 +63,19 @@ public class BlogController : Controller
         }
 
         var userBlogs = await _context.Blogs
-                                      .Where(b => b.UserID == user.Id)
-                                      .OrderByDescending(b => b.DatePosted)
-                                      .ToListAsync();
+                                  .Where(b => b.UserID == user.Id)
+                                  .Select(b => new Blog
+                                  {
+                                      BlogID = b.BlogID,
+                                      Title = b.Title,
+                                      Content = b.Content,
+                                      UserID = b.UserID,
+                                      DatePosted = b.DatePosted,   
+                                      UserEmail = b.UserEmail
+                                  })
+                                  .OrderByDescending(b => b.DatePosted)
+                                  .ToListAsync();
+
 
         return View(userBlogs);
     }
@@ -156,12 +167,7 @@ public class BlogController : Controller
         return RedirectToAction("MyBlogs");
     }
 
-
-
-
-
-
-
+    
 
 
 
