@@ -167,8 +167,116 @@ public class BlogController : Controller
         return RedirectToAction("MyBlogs");
     }
 
-    
+    [Authorize]
+    public async Task<IActionResult> MyComments()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            TempData["ErrorMessage"] = "Please log in to view your blogs.";
+            return RedirectToAction("Login", "Account");
+        }
+
+        var userComments = await _context.Comments
+                                  .Where(c => c.UserID == user.Id)
+                                  .Select(c => new Comment
+                                  {
+                                      CommentID = c.CommentID,
+                                      Blog = c.Blog,
+                                      Content = c.Content,
+                                      UserID = c.UserID,
+                                      DatePosted = c.DatePosted,
+                                      UserEmail = c.UserEmail
+                                  })
+                                  .OrderByDescending(b => b.DatePosted)
+                                  .ToListAsync();
 
 
+        return View(userComments);
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> MyComments(int? editingBlogId)
+    {
+        if (editingBlogId.HasValue)
+        {
+            TempData["EditingBlogId"] = editingBlogId;
+        }
+
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            TempData["ErrorMessage"] = "Please log in to view your comments.";
+            return RedirectToAction("Login", "Account");
+        }
+
+        var userComments = await _context.Comments
+                                      .Where(c => c.UserID == user.Id)
+                                      .OrderByDescending(c => c.DatePosted)
+                                      .ToListAsync();
+        return View(userComments);
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> DeleteC(int id)
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            TempData["ErrorMessage"] = "Please log in to delete a comment.";
+            return RedirectToAction("Login", "Account");
+        }
+
+        var comment = await _context.Comments.FindAsync(id);
+
+
+        if (comment == null || comment.UserID != user.Id)
+        {
+            TempData["ErrorMessage"] = "Comment not found or you are not authorized to delete it.";
+            return RedirectToAction("MyComments");
+        }
+
+
+        _context.Comments.Remove(comment);
+        await _context.SaveChangesAsync();
+
+        TempData["SuccessMessage"] = "Comment deleted successfully!";
+        return RedirectToAction("MyComments");
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> InlineEditC(int id,string content)
+    {
+        if (ModelState.IsValid)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                TempData["ErrorMessage"] = "Please log in to edit a comment.";
+                return RedirectToAction("Login", "Account");
+            }
+
+            var comment = await _context.Comments.FindAsync(id);
+
+
+            if (comment == null || comment.UserID != user.Id)
+            {
+                TempData["ErrorMessage"] = "Comment not found or you are not authorized to edit it.";
+                return RedirectToAction("MyComments");
+            }
+            comment.Content = content;
+            comment.DatePosted = DateTime.Now;
+
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Comment updated successfully!";
+
+            return RedirectToAction("MyComments");
+        }
+
+        return RedirectToAction("MyComments");
+    }
 
 }
