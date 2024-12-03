@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|c:\\users\\madus\\source\\repos\\bloggingplatform\\project1\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|solutionrelative:project1\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|c:\\users\\madus\\source\\repos\\bloggingplatform\\project1\\views\\blog\\mycomments.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|solutionrelative:project1\\views\\blog\\mycomments.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|c:\\users\\madus\\source\\repos\\bloggingplatform\\project1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|solutionrelative:project1\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|c:\\users\\madus\\source\\repos\\bloggingplatform\\project1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|solutionrelative:project1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|c:\\users\\madus\\source\\repos\\bloggingplatform\\project1\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|solutionrelative:project1\\models\\comment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|c:\\users\\madus\\source\\repos\\bloggingplatform\\project1\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|solutionrelative:project1\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|c:\\users\\madus\\source\\repos\\bloggingplatform\\project1\\models\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|solutionrelative:project1\\models\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|c:\\users\\madus\\source\\repos\\bloggingplatform\\project1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C85FE21D-813A-42AE-AA0B-36715E05F7DE}|Project1\\Project1.csproj|solutionrelative:project1\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,26 +42,65 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Project1\\Controllers\\HomeController.cs",
               "ToolTip": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Controllers\\HomeController.cs",
               "RelativeToolTip": "Project1\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwDkAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-30T00:42:10.878Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "BlogController.cs",
+              "DocumentMoniker": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Controllers\\BlogController.cs",
+              "RelativeDocumentMoniker": "Project1\\Controllers\\BlogController.cs",
+              "ToolTip": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Controllers\\BlogController.cs",
+              "RelativeToolTip": "Project1\\Controllers\\BlogController.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAgwOYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T20:28:07.002Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Comment.cs",
+              "DocumentMoniker": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Models\\Comment.cs",
+              "RelativeDocumentMoniker": "Project1\\Models\\Comment.cs",
+              "ToolTip": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Models\\Comment.cs",
+              "RelativeToolTip": "Project1\\Models\\Comment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T20:21:12.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Blog.cs",
+              "DocumentMoniker": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Models\\Blog.cs",
+              "RelativeDocumentMoniker": "Project1\\Models\\Blog.cs",
+              "ToolTip": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Models\\Blog.cs",
+              "RelativeToolTip": "Project1\\Models\\Blog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T20:24:48.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Project1\\Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Project1\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-04T19:39:17.443Z",
               "EditorCaption": ""
@@ -62,12 +113,12 @@
       "Orientation": 0,
       "VerticalTabListWidth": 256,
       "FloatingWindowState": {
-        "Id": "a821e683-ade0-4a87-b645-db9c4b106912",
+        "Id": "f654f830-935d-4cbc-a6d1-8fc9f49e0e60",
         "Display": 0,
-        "X": -5,
-        "Y": 313,
-        "Width": 999,
-        "Height": 1010,
+        "X": 369,
+        "Y": 312,
+        "Width": 706,
+        "Height": 640,
         "WindowState": 0
       },
       "DocumentGroups": [
@@ -77,15 +128,15 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BlogController.cs",
-              "DocumentMoniker": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Controllers\\BlogController.cs",
-              "RelativeDocumentMoniker": "Project1\\Controllers\\BlogController.cs",
-              "ToolTip": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Controllers\\BlogController.cs",
-              "RelativeToolTip": "Project1\\Controllers\\BlogController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T18:52:42.431Z",
+              "DocumentIndex": 1,
+              "Title": "MyComments.cshtml",
+              "DocumentMoniker": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Views\\Blog\\MyComments.cshtml",
+              "RelativeDocumentMoniker": "Project1\\Views\\Blog\\MyComments.cshtml",
+              "ToolTip": "C:\\Users\\madus\\source\\repos\\BloggingPlatform\\Project1\\Views\\Blog\\MyComments.cshtml",
+              "RelativeToolTip": "Project1\\Views\\Blog\\MyComments.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAADoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-02T20:18:29.296Z",
               "EditorCaption": ""
             }
           ]

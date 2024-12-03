@@ -188,7 +188,7 @@ public class BlogController : Controller
                                       DatePosted = c.DatePosted,
                                       UserEmail = c.UserEmail
                                   })
-                                  .OrderByDescending(b => b.DatePosted)
+                                  .OrderByDescending(c => c.DatePosted)
                                   .ToListAsync();
 
 
@@ -197,11 +197,11 @@ public class BlogController : Controller
 
     [Authorize]
     [HttpPost]
-    public async Task<IActionResult> MyComments(int? editingBlogId)
+    public async Task<IActionResult> MyComments(int? editingCommentId)
     {
-        if (editingBlogId.HasValue)
+        if (editingCommentId.HasValue)
         {
-            TempData["EditingBlogId"] = editingBlogId;
+            TempData["EditingCommentId"] = editingCommentId;
         }
 
         var user = await _userManager.GetUserAsync(User);
@@ -212,6 +212,7 @@ public class BlogController : Controller
         }
 
         var userComments = await _context.Comments
+                                      .Include(c => c.Blog)
                                       .Where(c => c.UserID == user.Id)
                                       .OrderByDescending(c => c.DatePosted)
                                       .ToListAsync();
