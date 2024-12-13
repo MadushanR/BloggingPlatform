@@ -15,9 +15,22 @@
 <form method="get" asp-action="Index">
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Search blogs..." name="searchString" value="@ViewData["SearchString"]" />
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate" name="startDate" class="form-control" value="@ViewData["StartDate"]" />
+        </div>
+        <div class="col-md-5">
+            <label for="endDate">End Date</label>
+            <input type="date" id="endDate" name="endDate" class="form-control" value="@ViewData["EndDate"]" />
+        </div>
+        <div class="col-md-2 align-self-end">
+            <button class="btn btn-primary" type="submit">SEARCH</button>
+        </div>
     </div>
 </form>
+<br />
 
 @if (TempData["SuccessMessage"] != null)
 {

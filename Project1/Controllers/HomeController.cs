@@ -33,29 +33,44 @@ namespace Project1.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string searchString, DateTime? startDate, DateTime? endDate)
         {
-
             var lowerSearchString = searchString?.ToLower();
-
-            var allBlogs = string.IsNullOrWhiteSpace(searchString)
-                ? await _context.Blogs
+            var query = _context.Blogs
                                 .Include(b => b.User)
                                 .Include(b => b.Comments)
                                 .ThenInclude(c => c.User)
-                                .OrderByDescending(b => b.DatePosted)
-                                .ToListAsync()
-                : await _context.Blogs
-                                .Include(b => b.User)
-                                .Include(b => b.Comments)
-                                .ThenInclude(c => c.User)
-                                .Where(b => b.Title.ToLower().Contains(lowerSearchString) || b.Content.ToLower().Contains(lowerSearchString))
-                                .OrderByDescending(b => b.DatePosted)
-                                .ToListAsync();
+                                .AsQueryable();
 
+            if (!string.IsNullOrWhiteSpace(searchString))
+            {
+                query = query.Where(b => b.Title.ToLower().Contains(lowerSearchString) || b.Content.ToLower().Contains(lowerSearchString));
+            }
+
+            if (startDate.HasValue)
+            {
+                query = query.Where(b => b.DatePosted >= startDate.Value);
+            }
+
+            if (endDate.HasValue)
+            {
+                
+                var adjustedEndDate = endDate.Value.AddDays(1).AddTicks(-1);
+                query = query.Where(b => b.DatePosted <= adjustedEndDate);
+            }
+
+            var allBlogs = await query.OrderByDescending(b => b.DatePosted).ToListAsync();
+
+            
             ViewData["SearchString"] = searchString;
+            ViewData["StartDate"] = startDate?.ToString("yyyy-MM-dd");
+            ViewData["EndDate"] = endDate?.ToString("yyyy-MM-dd");
+
             return View(allBlogs);
         }
+
+
+
 
 
         [HttpPost]
