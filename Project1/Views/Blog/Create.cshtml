@@ -1,8 +1,8 @@
-﻿@model Blog
+﻿@model Project1.Models.Blog
 
 <h2>Create a New Blog Post</h2>
 
-<form asp-action="Create" method="post" asp-controller="Blog">
+<form asp-action="Create" method="post" asp-controller="Blog" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="Title"></label>
         <input asp-for="Title" class="form-control" />
@@ -14,6 +14,24 @@
         <textarea asp-for="Content" class="form-control"></textarea>
         <span asp-validation-for="Content" class="text-danger"></span>
     </div>
+
+    <div class="form-group">
+        <label for="Image">Upload an Image</label>
+        <input type="file" class="form-control" id="Image" name="Image" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VideoUrl">Video URL</label>
+        <input asp-for="VideoUrl" class="form-control" />
+        <span asp-validation-for="VideoUrl" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LinkUrl">External Link</label>
+        <input asp-for="LinkUrl" class="form-control" />
+        <span asp-validation-for="LinkUrl" class="text-danger"></span>
+    </div>
+
     <br />
     <button type="submit" class="btn btn-primary">Post Blog</button>
 </form>
@@ -25,6 +43,3 @@
         @TempData["SuccessMessage"]
     </div>
 }
-
-
-

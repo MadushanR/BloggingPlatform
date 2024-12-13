@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.github",
+    "\\.github\\workflows",
+    "\\Project1",
+    "\\Project1\\Data"
+  ],
+  "SelectedNode": "\\Project1\\Data\\ApplicationDbContext.cs",
+  "PreviewInSolutionExplorer": false
+}

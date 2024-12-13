@@ -639,9 +639,9 @@ C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\refint\Proje
 C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\Project1.pdb
 C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\Project1.genruntimeconfig.cache
 C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\ref\Project1.dll
-C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\madus\Downloads\BloggingPlatform\Project1\bin\Debug\net8.0\System.Formats.Asn1.dll
 C:\Users\madus\Downloads\BloggingPlatform\Project1\bin\Debug\net8.0\System.IO.Pipelines.dll
 C:\Users\madus\Downloads\BloggingPlatform\Project1\bin\Debug\net8.0\System.Text.Encodings.Web.dll
 C:\Users\madus\Downloads\BloggingPlatform\Project1\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\madus\Downloads\BloggingPlatform\Project1\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

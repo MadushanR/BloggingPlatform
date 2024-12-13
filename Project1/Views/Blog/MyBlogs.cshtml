@@ -23,14 +23,24 @@ else
         @foreach (var blog in Model)
         {
             <li class="list-group-item mb-3">
+                @if (!string.IsNullOrEmpty(blog.ImageUrl))
+                {
+                    <img src="@blog.ImageUrl" alt="Blog Image" class="img-fluid mb-2" style="max-width: 100%; height: auto;" />
+                }
+
+                @if (!string.IsNullOrEmpty(blog.VideoUrl))
+                {
+                    <div class="embed-responsive embed-responsive-16by9 mb-2">
+                        <iframe class="embed-responsive-item" src="@blog.VideoUrl" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                }
+
                 <h4>@blog.Title</h4>
                 <p>@blog.Content</p>
-                <small>Posted on: @blog.DatePosted.ToString("MMMM dd, yyyy")</small>
-
 
                 @if (editingBlogId == blog.BlogID)
                 {
-                    <form asp-action="InlineEdit" method="post">
+                    <form asp-action="InlineEdit" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="@blog.BlogID" />
 
                         <div class="form-group">
@@ -41,11 +51,24 @@ else
                             <label>Content</label>
                             <textarea name="content" class="form-control">@blog.Content</textarea>
                         </div>
-
+                        <div class="form-group">
+                            <label>Current Image</label>
+                            @if (!string.IsNullOrEmpty(blog.ImageUrl))
+                            {
+                                <img src="@blog.ImageUrl" alt="Current Image" class="img-fluid mb-2" style="max-width: 100px; height: auto;" />
+                            }
+                            else
+                            {
+                                <p>No image available.</p>
+                            }
+                            <label>Upload New Image</label>
+                            <input type="file" name="Image" class="form-control" />
+                        </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                         <a asp-action="MyBlogs" class="btn btn-secondary">Cancel</a>
                     </form>
                 }
+
                 else
                 {
                     <div class="mt-2">
@@ -54,16 +77,13 @@ else
                             <button type="submit" class="btn btn-warning btn-sm">Edit</button>
                         </form>
 
-
                         <form asp-action="Delete" method="post" class="d-inline">
                             <input type="hidden" name="id" value="@blog.BlogID" />
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this blog post?');">Delete</button>
                         </form>
                     </div>
                 }
-
             </li>
         }
     </ul>
 }
-
