@@ -42,13 +42,11 @@ namespace Project1.Controllers
                                 .ThenInclude(c => c.User)
                                 .AsQueryable();
 
-        
             if (!string.IsNullOrWhiteSpace(searchString))
             {
                 query = query.Where(b => b.Title.ToLower().Contains(lowerSearchString) || b.Content.ToLower().Contains(lowerSearchString));
             }
 
-         
             if (startDate.HasValue)
             {
                 query = query.Where(b => b.DatePosted >= startDate.Value);
@@ -56,19 +54,22 @@ namespace Project1.Controllers
 
             if (endDate.HasValue)
             {
-               
+                
                 var adjustedEndDate = endDate.Value.AddDays(1).AddTicks(-1);
                 query = query.Where(b => b.DatePosted <= adjustedEndDate);
             }
 
             var allBlogs = await query.OrderByDescending(b => b.DatePosted).ToListAsync();
 
+            
             ViewData["SearchString"] = searchString;
             ViewData["StartDate"] = startDate?.ToString("yyyy-MM-dd");
             ViewData["EndDate"] = endDate?.ToString("yyyy-MM-dd");
 
             return View(allBlogs);
         }
+
+
 
 
 
