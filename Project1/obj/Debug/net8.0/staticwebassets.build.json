@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rFWJDcAyyT30m+XEJyfm+G2NWyTGwcURkzZkNFCuzGM=",
+  "Hash": "dFXKO7s1tSTLTNKJoJWy33hSLtfGgL4lkN4qDIgI+ko=",
   "Source": "Project1",
   "BasePath": "_content/Project1",
   "Mode": "Default",
@@ -2577,6 +2577,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\madus\\Downloads\\BloggingPlatform\\Project1\\wwwroot\\uploads\\images.jpg",
+      "SourceId": "Project1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\madus\\Downloads\\BloggingPlatform\\Project1\\wwwroot\\",
+      "BasePath": "_content/Project1",
+      "RelativePath": "uploads/images#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4o0yvgud5a",
+      "Integrity": "5BaX3O9e0x1b5sBJ1ON0+vNs1vKPGqJ2vBRXr/0a0Lk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\images.jpg"
     }
   ],
   "Endpoints": [
@@ -9881,6 +9902,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-0wfNiI5/ye9NQXOHJn9EW1rIrWb0qZak7BIM9kwm+ag="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/images.4o0yvgud5a.jpg",
+      "AssetFile": "C:\\Users\\madus\\Downloads\\BloggingPlatform\\Project1\\wwwroot\\uploads\\images.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7117"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5BaX3O9e0x1b5sBJ1ON0+vNs1vKPGqJ2vBRXr/0a0Lk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 13 Dec 2024 06:22:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4o0yvgud5a"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/images.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5BaX3O9e0x1b5sBJ1ON0+vNs1vKPGqJ2vBRXr/0a0Lk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/images.jpg",
+      "AssetFile": "C:\\Users\\madus\\Downloads\\BloggingPlatform\\Project1\\wwwroot\\uploads\\images.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7117"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5BaX3O9e0x1b5sBJ1ON0+vNs1vKPGqJ2vBRXr/0a0Lk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 13 Dec 2024 06:22:03 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5BaX3O9e0x1b5sBJ1ON0+vNs1vKPGqJ2vBRXr/0a0Lk="
         }
       ]
     }
