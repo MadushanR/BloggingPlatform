@@ -3,23 +3,24 @@ using Microsoft.EntityFrameworkCore;
 using Project1.Data;
 public class Program
 {
-    public static Task Main(string[] args)
+    public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
-      
+
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlite(connectionString));
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
         builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
         builder.Services.AddControllersWithViews();
 
         var app = builder.Build();
 
-     
+
         if (app.Environment.IsDevelopment())
         {
             app.UseMigrationsEndPoint();
@@ -27,7 +28,7 @@ public class Program
         else
         {
             app.UseExceptionHandler("/Home/Error");
-      
+
             app.UseHsts();
         }
 
@@ -43,22 +44,39 @@ public class Program
             pattern: "{controller=Home}/{action=Index}/{id?}");
         app.MapRazorPages();
 
-        app.Run();
-        return Task.CompletedTask;
-    }
-
-    private static async Task EnsureRolesAsync(RoleManager<IdentityRole> roleManager)
-    {
-        string[] roleNames = { "Admin", "Blogger", "Reader" };
-
-        foreach (var roleName in roleNames)
+        using (var scope = app.Services.CreateScope())
         {
-            if (!await roleManager.RoleExistsAsync(roleName))
+            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var roles = new[] { "Admin", "Blogger", "Reader" };
+
+            foreach (var role in roles)
             {
-                await roleManager.CreateAsync(new IdentityRole(roleName));
+                if (!await roleManager.RoleExistsAsync(role))
+                    await roleManager.CreateAsync(new IdentityRole(role));
             }
         }
+
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+            string email = "admin@gmail.com";
+            string password = "Admin123!";
+            if (await userManager.FindByEmailAsync(email) == null)
+            {
+                var user = new IdentityUser();
+                user.UserName = email;
+                user.Email = email;
+                user.EmailConfirmed = true;
+                await userManager.CreateAsync(user,password);
+
+                await userManager.AddToRoleAsync(user,"Admin");
+            }
+        }
+        app.Run();   
     }
+
 }
 
 
