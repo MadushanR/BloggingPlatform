@@ -1,0 +1,39 @@
+﻿@model List<Project1.Models.Comment>
+
+<h2>Manage Comments</h2>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Comment</th>
+            <th>Blog Title</th>
+            <th>User Email</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var comment in Model)
+        {
+            <tr>
+                <td>@comment.Content</td>
+                <td>@comment.Blog?.Title</td>
+                <td>@comment.Blog?.UserEmail</td>
+                <td>@comment.Blog?.DatePosted</td>
+                <td>
+                    <form asp-action="DeleteComment" method="post">
+                        <input type="hidden" name="id" value="@comment.CommentID" />
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
