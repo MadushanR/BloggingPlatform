@@ -37,9 +37,9 @@ namespace Project1.Controllers
             var lowerSearchString = searchString?.ToLower();
             var query = _context.Blogs
                                 .Include(b => b.User)
-                                .Include(b => b.Comments)
+                                .Include(b => b.Comments.Where(c => c.IsApproved))
                                 .ThenInclude(c => c.User)
-                                .Where(b => !b.IsDraft) // Exclude drafts
+                                .Where(b => !b.IsDraft && b.IsApproved) 
                                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(searchString))

@@ -33,5 +33,7 @@ namespace Project1.Models
         public virtual Comment? ParentComment { get; set; }
 
         public virtual ICollection<Comment> Replies { get; set; } = new List<Comment>();
+
+        public bool IsApproved { get; set; }
     }
 }

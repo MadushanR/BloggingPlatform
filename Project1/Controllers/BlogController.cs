@@ -38,7 +38,7 @@ namespace Project1.Controllers
             }
 
             var userComments = await _context.Comments
-                                      .Where(c => c.UserID == user.Id)
+                                      .Where(c => c.UserID == user.Id && c.IsApproved)
                                       .Select(c => new Comment
                                       {
                                           CommentID = c.CommentID,
@@ -73,7 +73,7 @@ namespace Project1.Controllers
 
             var userComments = await _context.Comments
                                           .Include(c => c.Blog)
-                                          .Where(c => c.UserID == user.Id)
+                                          .Where(c => c.UserID == user.Id && c.IsApproved)
                                           .OrderByDescending(c => c.DatePosted)
                                           .ToListAsync();
             return View(userComments);
@@ -193,7 +193,7 @@ namespace Project1.Controllers
             }
 
             var userBlogs = await _context.Blogs
-                                          .Where(b => b.UserID == user.Id)
+                                          .Where(b => b.UserID == user.Id && (b.IsApproved || b.IsDraft))
                                           .OrderByDescending(b => b.DatePosted)
                                           .ToListAsync();
 
@@ -217,7 +217,7 @@ namespace Project1.Controllers
             }
 
             var userBlogs = await _context.Blogs
-                                          .Where(b => b.UserID == user.Id)
+                                          .Where(b => b.UserID == user.Id && (b.IsApproved || b.IsDraft))
                                           .OrderByDescending(b => b.DatePosted)
                                           .ToListAsync();
             return View(userBlogs);

@@ -1,0 +1,42 @@
+﻿@model List<Project1.Models.Blog>
+
+<h2>Approve Posts</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var post in Model)
+        {
+            <tr>
+                <td>@post.Title</td>
+                <td>@post.UserEmail</td>
+                <td>
+                    <form asp-action="ApprovePost" method="post" style="display:inline">
+                        <input type="hidden" name="id" value="@post.BlogID" />
+                        <button class="btn btn-success btn-sm">Approve</button>
+                    </form>
+                    <form asp-action="RejectPost" method="post" style="display:inline">
+                        <input type="hidden" name="id" value="@post.BlogID" />
+                        <button class="btn btn-danger btn-sm">Reject</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
