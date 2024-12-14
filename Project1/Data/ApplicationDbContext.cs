@@ -12,11 +12,17 @@ namespace Project1.Data
             {
             }
 
-            protected override void OnModelCreating(ModelBuilder builder)
-            {
-                base.OnModelCreating(builder);
-               
-            }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Comment>()
+                .HasOne(c => c.ParentComment)
+                .WithMany(c => c.Replies)
+                .HasForeignKey(c => c.ParentCommentID)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
+
 
         public DbSet<IdentityUser> ApplicationUsers { get; set; } 
 
