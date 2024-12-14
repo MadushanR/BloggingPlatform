@@ -20,13 +20,13 @@ namespace Project1.Controllers
             _userManager = userManager;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Blogger")]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
-
+        [Authorize(Roles = "Reader, Blogger")]
         [Authorize]
         public async Task<IActionResult> MyComments()
         {
@@ -55,7 +55,7 @@ namespace Project1.Controllers
             return View(userComments);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Reader, Blogger")]
         [HttpPost]
         public async Task<IActionResult> MyComments(int? editingCommentId)
         {
@@ -78,7 +78,8 @@ namespace Project1.Controllers
                                           .ToListAsync();
             return View(userComments);
         }
-        [Authorize]
+
+        [Authorize(Roles = "Reader, Blogger")]
         [HttpPost]
         public async Task<IActionResult> InlineEditC(int id, string content)
         {
@@ -110,7 +111,8 @@ namespace Project1.Controllers
 
             return RedirectToAction("MyComments");
         }
-        [Authorize]
+
+        [Authorize(Roles = "Reader, Blogger")]
         [HttpPost]
         public async Task<IActionResult> DeleteC(int id)
         {
@@ -139,7 +141,7 @@ namespace Project1.Controllers
         }
 
 
-        [Authorize]
+        [Authorize(Roles = "Blogger")]
         [HttpPost]
         public async Task<IActionResult> Create(Blog model, IFormFile? Image, bool saveAsDraft)
         {
@@ -180,7 +182,7 @@ namespace Project1.Controllers
         }
 
 
-        [Authorize]
+        [Authorize(Roles = "Blogger")]
         public async Task<IActionResult> MyBlogs()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -198,7 +200,7 @@ namespace Project1.Controllers
             return View(userBlogs);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Blogger")]
         [HttpPost]
         public async Task<IActionResult> MyBlogs(int? editingBlogId)
         {
@@ -220,7 +222,7 @@ namespace Project1.Controllers
                                           .ToListAsync();
             return View(userBlogs);
         }
-        [Authorize]
+        [Authorize(Roles = "Blogger")]
         [HttpPost]
         public async Task<IActionResult> InlineEdit(int id, string title, string content, IFormFile? Image)
         {
@@ -281,7 +283,7 @@ namespace Project1.Controllers
         }
 
 
-        [Authorize]
+        [Authorize(Roles = "Blogger")]
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
@@ -308,7 +310,7 @@ namespace Project1.Controllers
         }
 
 
-        [Authorize]
+        [Authorize(Roles = "Blogger")]
         [HttpPost]
         public async Task<IActionResult> Publish(int id)
         {
