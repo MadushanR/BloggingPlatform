@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project1.Data;
-using Project1.Models;
-using System.Threading.Tasks;
+
 
 [Authorize(Roles = "Admin")]
 public class AdminController : Controller
@@ -18,11 +17,92 @@ public class AdminController : Controller
         _userManager = userManager;
     }
 
-    public async Task<IActionResult> ManageUsers()
+    public async Task<IActionResult> ApprovePosts()
     {
-        var users = await _userManager.Users.ToListAsync();
-        return View(users);
+        var pendingPosts = await _context.Blogs.Where(b => !b.IsApproved).ToListAsync();
+        return View(pendingPosts);
     }
+
+    [HttpPost]
+    public async Task<IActionResult> ApprovePost(int id)
+    {
+        var post = await _context.Blogs.FindAsync(id);
+        if (post != null)
+        {
+            post.IsApproved = true;
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Post approved successfully.";
+        }
+        else
+        {
+            TempData["ErrorMessage"] = "Post not found.";
+        }
+        return RedirectToAction("ApprovePosts");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> RejectPost(int id)
+    {
+        var post = await _context.Blogs.FindAsync(id);
+        if (post != null)
+        {
+            _context.Blogs.Remove(post);
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Post rejected and deleted successfully.";
+        }
+        else
+        {
+            TempData["ErrorMessage"] = "Post not found.";
+        }
+        return RedirectToAction("ApprovePosts");
+    }
+
+   
+    public async Task<IActionResult> ApproveComments()
+    {
+        var pendingComments = await _context.Comments.Where(c => !c.IsApproved).ToListAsync();
+        return View(pendingComments);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> ApproveComment(int id)
+    {
+        var comment = await _context.Comments.FindAsync(id);
+        if (comment != null)
+        {
+            comment.IsApproved = true;
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Comment approved successfully.";
+        }
+        else
+        {
+            TempData["ErrorMessage"] = "Comment not found.";
+        }
+        return RedirectToAction("ApproveComments");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> RejectComment(int id)
+    {
+        var comment = await _context.Comments.FindAsync(id);
+        if (comment != null)
+        {
+            _context.Comments.Remove(comment);
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Comment rejected and deleted successfully.";
+        }
+        else
+        {
+            TempData["ErrorMessage"] = "Comment not found.";
+        }
+        return RedirectToAction("ApproveComments");
+    }
+
+    public async Task<IActionResult> ManageUsers()
+        {
+            var users = await _userManager.Users.ToListAsync();
+            return View(users);
+        }
 
     [HttpPost]
     public async Task<IActionResult> DeleteUser(string id)

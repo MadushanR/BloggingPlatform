@@ -33,6 +33,8 @@ namespace Project1.Models
         public string? ImageUrl { get; set; }
         public string? VideoUrl { get; set; }
         public string? LinkUrl { get; set; }
+
+        public bool IsApproved { get; set; }
     }
 
 }

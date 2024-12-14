@@ -1,0 +1,44 @@
+﻿@model List<Project1.Models.Comment>
+
+<h2>Approve Comments</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Content</th>
+            <th>Blog Title</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var comment in Model)
+        {
+            <tr>
+                <td>@comment.Content</td>
+                <td>@comment.Blog?.Title</td>
+                <td>@comment.UserEmail</td>
+                <td>
+                    <form asp-action="ApproveComment" method="post" style="display:inline">
+                        <input type="hidden" name="id" value="@comment.CommentID" />
+                        <button class="btn btn-success btn-sm">Approve</button>
+                    </form>
+                    <form asp-action="RejectComment" method="post" style="display:inline">
+                        <input type="hidden" name="id" value="@comment.CommentID" />
+                        <button class="btn btn-danger btn-sm">Reject</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
