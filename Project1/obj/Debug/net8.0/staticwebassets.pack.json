@@ -245,6 +245,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\madus\\Downloads\\BloggingPlatform\\Project1\\wwwroot\\uploads\\flower.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\flower.jpeg"
+    },
+    {
       "Id": "C:\\Users\\madus\\Downloads\\BloggingPlatform\\Project1\\wwwroot\\uploads\\images.jpg",
       "PackagePath": "staticwebassets\\uploads\\images.jpg"
     },
