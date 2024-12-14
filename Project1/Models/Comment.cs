@@ -26,6 +26,12 @@ namespace Project1.Models
         [ForeignKey("UserID")]
         public IdentityUser? User { get; set; }
 
-        public string? UserEmail { get; set; } 
+        public string? UserEmail { get; set; }
+
+        public int? ParentCommentID { get; set; } 
+        [ForeignKey("ParentCommentID")]
+        public virtual Comment? ParentComment { get; set; }
+
+        public virtual ICollection<Comment> Replies { get; set; } = new List<Comment>();
     }
 }

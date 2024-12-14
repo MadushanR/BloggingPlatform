@@ -1,0 +1,28 @@
+﻿@model List<Project1.Models.Comment>
+
+<ul class="list-group mt-3">
+    @foreach (var comment in Model)
+    {
+        <li class="list-group-item">
+            <p>@comment.Content</p>
+            <small>Posted by: @comment.UserEmail on @comment.DatePosted.ToString("MMMM dd, yyyy")</small>
+
+            @if (User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                <form asp-action="AddComment" method="post" class="mt-3">
+                    <input type="hidden" name="blogId" value="@comment.BlogID" />
+                    <input type="hidden" name="parentCommentId" value="@comment.CommentID" />
+                    <div class="form-group">
+                        <textarea name="content" class="form-control" rows="2" placeholder="Reply..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm mt-2">Reply</button>
+                </form>
+            }
+
+            @if (comment.Replies != null && comment.Replies.Any())
+            {
+                @await Html.PartialAsync("_RenderComments", comment.Replies.ToList())
+            }
+        </li>
+    }
+</ul>

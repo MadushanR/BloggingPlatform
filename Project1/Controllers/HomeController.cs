@@ -69,19 +69,19 @@ namespace Project1.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> AddComment(int blogId, string content)
+        public async Task<IActionResult> AddComment(int blogId, string content, int? parentCommentId)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 TempData["ErrorMessage"] = "You need to log in to post a comment.";
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Index");
             }
 
             if (string.IsNullOrWhiteSpace(content))
             {
                 TempData["ErrorMessage"] = "Comment cannot be empty.";
-                return RedirectToAction("Details", new { id = blogId });
+                return RedirectToAction("Index");
             }
 
             var comment = new Comment
@@ -89,7 +89,9 @@ namespace Project1.Controllers
                 Content = content,
                 BlogID = blogId,
                 UserID = user.Id,
-                UserEmail = user.Email
+                UserEmail = user.Email,
+                ParentCommentID = parentCommentId,
+                DatePosted = DateTime.Now
             };
 
             _context.Comments.Add(comment);
@@ -98,6 +100,7 @@ namespace Project1.Controllers
             TempData["SuccessMessage"] = "Comment added successfully.";
             return RedirectToAction("Index");
         }
+
 
         public async Task<IActionResult> Details(int id)
         {
