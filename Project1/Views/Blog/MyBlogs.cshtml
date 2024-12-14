@@ -13,16 +13,26 @@
         @TempData["SuccessMessage"]
     </div>
 }
+
 @if (Model.Count == 0)
 {
     <p>You have not posted any blogs yet.</p>
 }
 else
 {
-    <ul class="list-group">
-        @foreach (var blog in Model)
+    <h2>Draft Blogs</h2>
+
+    @if (!Model.Any(b => b.IsDraft))
+    {
+        <p>You have no drafts available.</p>
+    }else
+    {
+    <ul class="list-group mb-4">
+        @foreach (var blog in Model.Where(b => b.IsDraft))
         {
             <li class="list-group-item mb-3">
+                <h4>@blog.Title</h4>
+                <p>@blog.Content</p>
                 @if (!string.IsNullOrEmpty(blog.ImageUrl))
                 {
                     <img src="@blog.ImageUrl" alt="Blog Image" class="img-fluid mb-2" style="max-width: 100%; height: auto;" />
@@ -35,9 +45,47 @@ else
                     </div>
                 }
 
+                    <form asp-action="Publish" method="post" class="d-inline">
+                        <input type="hidden" name="id" value="@blog.BlogID" />
+                        <button type="submit" class="btn btn-success btn-sm">Publish</button>
+                    </form>
+                <form asp-action="Delete" method="post" class="d-inline">
+                    <input type="hidden" name="id" value="@blog.BlogID" />
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this draft?');">Delete</button>
+                </form>
+            </li>
+        }
+        
+    </ul>
+    }
+
+    <h2>Published Blogs</h2>
+
+    @if (!Model.Any(b => !b.IsDraft))
+    {
+        <p>You have no Published Blogs available.</p>
+    }
+    else
+    {
+    <ul class="list-group">
+        @foreach (var blog in Model.Where(b => !b.IsDraft))
+        {
+            <li class="list-group-item mb-3">
+                
+
                 <h4>@blog.Title</h4>
                 <p>@blog.Content</p>
+                @if (!string.IsNullOrEmpty(blog.ImageUrl))
+                {
+                    <img src="@blog.ImageUrl" alt="Blog Image" class="img-fluid mb-2" style="max-width: 100%; height: auto;" />
+                }
 
+                @if (!string.IsNullOrEmpty(blog.VideoUrl))
+                {
+                    <div class="embed-responsive embed-responsive-16by9 mb-2">
+                        <iframe class="embed-responsive-item" src="@blog.VideoUrl" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                }
                 @if (editingBlogId == blog.BlogID)
                 {
                     <form asp-action="InlineEdit" method="post" enctype="multipart/form-data">
@@ -68,7 +116,6 @@ else
                         <a asp-action="MyBlogs" class="btn btn-secondary">Cancel</a>
                     </form>
                 }
-
                 else
                 {
                     <div class="mt-2">
@@ -86,4 +133,5 @@ else
             </li>
         }
     </ul>
+}
 }

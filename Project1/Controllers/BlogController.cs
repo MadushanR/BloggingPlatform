@@ -141,7 +141,7 @@ namespace Project1.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Create(Blog model, IFormFile? Image)
+        public async Task<IActionResult> Create(Blog model, IFormFile? Image, bool saveAsDraft)
         {
             if (ModelState.IsValid)
             {
@@ -154,6 +154,7 @@ namespace Project1.Controllers
 
                 model.UserID = user.Id;
                 model.UserEmail = user.Email;
+                model.IsDraft = saveAsDraft;
 
                 if (Image != null && Image.Length > 0)
                 {
@@ -165,18 +166,19 @@ namespace Project1.Controllers
                         await Image.CopyToAsync(stream);
                     }
 
-                    model.ImageUrl = $"/uploads/{fileName}"; 
+                    model.ImageUrl = $"/uploads/{fileName}";
                 }
 
                 _context.Blogs.Add(model);
                 await _context.SaveChangesAsync();
 
-                TempData["SuccessMessage"] = "Blog post created successfully!";
-                return RedirectToAction("Create", "Blog");
+                TempData["SuccessMessage"] = saveAsDraft ? "Blog post saved as draft!" : "Blog post created successfully!";
+                return RedirectToAction("MyBlogs", "Blog");
             }
 
             return View(model);
         }
+
 
         [Authorize]
         public async Task<IActionResult> MyBlogs()
@@ -304,5 +306,34 @@ namespace Project1.Controllers
             TempData["SuccessMessage"] = "Blog post deleted successfully!";
             return RedirectToAction("MyBlogs");
         }
+
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Publish(int id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                TempData["ErrorMessage"] = "Please log in to publish the blog.";
+                return RedirectToAction("Login", "Account");
+            }
+
+            var blog = await _context.Blogs.FindAsync(id);
+            if (blog == null || blog.UserID != user.Id || !blog.IsDraft)
+            {
+                TempData["ErrorMessage"] = "Blog not found, not authorized, or already published.";
+                return RedirectToAction("MyBlogs");
+            }
+
+            blog.IsDraft = false;
+            blog.DatePosted = DateTime.Now;
+
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Blog post published successfully!";
+            return RedirectToAction("MyBlogs");
+        }
+
     }
 }

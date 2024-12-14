@@ -516,7 +516,6 @@ C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\staticwebass
 C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Project1.props
 C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Project1.props
 C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\Project1.csproj.Up2Date
 C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\Project1.dll
 C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\refint\Project1.dll
@@ -649,3 +648,4 @@ C:\Users\madus\Downloads\BloggingPlatform\Project1\bin\Debug\net8.0\runtimes\win
 C:\Users\madus\Downloads\BloggingPlatform\Project1\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\madus\Downloads\BloggingPlatform\Project1\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 C:\Users\madus\Downloads\BloggingPlatform\Project1\bin\Debug\net8.0\System.ClientModel.dll
+C:\Users\madus\Downloads\BloggingPlatform\Project1\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
