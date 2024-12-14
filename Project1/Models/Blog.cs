@@ -26,11 +26,13 @@ namespace Project1.Models
         [ForeignKey("UserID")]
         public IdentityUser? User { get; set; }
 
+        public bool IsDraft { get; set; } = true; 
+
         public ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
-        // Multimedia support
-        public string? ImageUrl { get; set; } // For images
-        public string? VideoUrl { get; set; } // For video links
-        public string? LinkUrl { get; set; }  // For external links
+        public string? ImageUrl { get; set; }
+        public string? VideoUrl { get; set; }
+        public string? LinkUrl { get; set; }
     }
+
 }

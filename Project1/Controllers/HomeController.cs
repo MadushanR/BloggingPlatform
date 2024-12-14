@@ -21,7 +21,6 @@ namespace Project1.Controllers
             _userManager = userManager;
         }
 
-
         public IActionResult Privacy()
         {
             return View();
@@ -40,6 +39,7 @@ namespace Project1.Controllers
                                 .Include(b => b.User)
                                 .Include(b => b.Comments)
                                 .ThenInclude(c => c.User)
+                                .Where(b => !b.IsDraft) // Exclude drafts
                                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(searchString))
@@ -54,24 +54,18 @@ namespace Project1.Controllers
 
             if (endDate.HasValue)
             {
-                
                 var adjustedEndDate = endDate.Value.AddDays(1).AddTicks(-1);
                 query = query.Where(b => b.DatePosted <= adjustedEndDate);
             }
 
             var allBlogs = await query.OrderByDescending(b => b.DatePosted).ToListAsync();
 
-            
             ViewData["SearchString"] = searchString;
             ViewData["StartDate"] = startDate?.ToString("yyyy-MM-dd");
             ViewData["EndDate"] = endDate?.ToString("yyyy-MM-dd");
 
             return View(allBlogs);
         }
-
-
-
-
 
         [HttpPost]
         [Authorize]
@@ -102,7 +96,7 @@ namespace Project1.Controllers
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Comment added successfully.";
-            return RedirectToAction("Index");  
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Details(int id)
@@ -111,7 +105,7 @@ namespace Project1.Controllers
                                      .Include(b => b.User)
                                      .Include(b => b.Comments)
                                      .ThenInclude(c => c.User)
-                                     .FirstOrDefaultAsync(b => b.BlogID == id);
+                                     .FirstOrDefaultAsync(b => b.BlogID == id ); 
 
             if (blog == null)
             {
