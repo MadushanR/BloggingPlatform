@@ -68,7 +68,7 @@ namespace Project1.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Reader, Blogger")]
         public async Task<IActionResult> AddComment(int blogId, string content, int? parentCommentId)
         {
             var user = await _userManager.GetUserAsync(User);
